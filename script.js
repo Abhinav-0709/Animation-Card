@@ -1,0 +1,3 @@
+alert(
+    "Fuck you bitch"
+)

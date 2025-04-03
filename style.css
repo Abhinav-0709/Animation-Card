@@ -1,0 +1,241 @@
+*{
+    margin: 0;
+    padding: 0; 
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(rgb(236, 111, 111),rgb(10, 10, 251));
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap; 
+    padding: 20px;
+}
+.card{
+    position: relative;
+    display: flex;
+    width: 350px;
+    height: 190px;
+    background: white;
+    transition: 0.5s;
+}
+.card:hover{
+    height: 450px; 
+}
+.card .line{
+    position: absolute;
+    inset: 0;
+    background: black;
+    overflow: hidden;
+}
+.card .line::before{
+    content: "";
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 600px;
+    height: 120px;
+    background: linear-gradient(
+        transparent,
+        rgb(2, 247, 145),
+        rgb(2, 248, 195),
+        rgb(42, 209, 243),
+         transparent
+    );
+    animation: animate 5s linear infinite;
+}
+@keyframes animate
+{
+    0%{
+        transform: translate(-50%,-50%) rotate(0deg);
+        opacity: 0.6;
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        transform: translate(-50%,-50%) rotate(360deg);
+        opacity: 0.6;
+    }
+
+}
+.card .line::after{
+    content:"";
+    position: absolute;
+    inset: 4px;
+    background: rgb(4, 4, 4);
+
+}
+.card .imgbox{
+    position: absolute;
+    top: -30%;
+    left: 50%;
+    transform: translate(-50%);
+    width: 150px;
+    height: 150px;
+    background: rgb(9, 9, 9);
+    transition: 0.6s;
+    z-index:10;
+    overflow:hidden;
+}
+.card:hover .imgbox{
+    width: 250px;
+    height: 250px;
+}
+.card .imgbox::before{
+    content: "";
+    position: absolute;
+    top:50%;
+    left: 50%;
+    width: 500px;
+    height: 150px;
+    transform: translateX(-50%,-50%);    
+    background: linear-gradient(
+        transparent,
+        rgb(2, 247, 145),
+        rgb(2, 248, 195),
+        rgb(42, 209, 243),
+         transparent
+    );
+    animation: animate2 6s linear infinite;
+}
+@keyframes animate2
+{
+    0%{
+        transform: translate(-50%,-50%) rotate(360deg);
+    
+    }
+    100%{
+        transform: translate(-50%,-50%) rotate(0deg);
+    
+    }
+
+}
+.card .imgbox::after{
+    content:"";
+    position: absolute;
+    inset: 3px;
+    background: black;
+}
+.card .imgbox img{
+    position:absolute;
+    top:6px;
+    left:6px;
+    z-index: 1;
+    width: calc(95%);
+    height: calc(100%)-30px;
+}
+.card .content{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: hidden;
+}
+.card .content .details{
+    padding: 40px;
+    text-align: center;
+    width: 100%;
+    transition: 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    transform: translate(0);
+    opacity: 1;
+}
+.card:hover .content .details{
+    opacity: 1;
+    transform: translate(0px);    
+}
+.card .content .details h2{
+    font-size: 1.25rem;
+    font-weight: 600;
+    color:bisque;
+    line-height:1.2em ;
+}
+.card .content .details h3 span{
+    font-size: 0.75rem;
+    font-weight: 500;
+    color:rgb(4, 4, 236);
+    display: block;
+    text-align: center;
+}
+.card .content .details .data{
+    display: flex;
+    justify-content: space-between;
+    margin:20px;
+    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+    color:aliceblue;
+}
+.card .content .details .data h3{
+    font-size: 1em;
+    color:coral;
+    line-height: 1.2em;
+    font-weight: 600;
+}
+.card .content .details .data h3 span{
+    font-size: 0.75em;
+    color:rgb(229, 25, 205);
+    font-weight: 400;
+
+}
+.card .content .details .actionBtn {
+    display: flex;
+    justify-content: space-between;
+    gap:15px;
+}
+.card .content .details .actionBtn button{
+    padding: 10px 30px;
+    border: none;
+    outline: none;
+    border-radius:5px;
+    font-size: 1em;
+    font-weight: 500;
+    background: violet;
+    color:black;
+    cursor: pointer;
+}
+.card .content .details .actionBtn button:nth-child(2){
+    background: white;
+}
+.card .content .details .actionBtn button{
+    opacity: 1;
+}
+.card .content .details .actionBtn button:hover {
+    background: rgb(200, 0, 255);
+    color: white;
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+.card .imgbox img {
+    transition: 0.5s ease-in-out;
+}
+
+.card:hover .imgbox img {
+    scale: 1.1;
+}
+.card {
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+.card:hover {
+    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.4);
+}
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Stack cards on smaller screens */
+        align-items: center;
+    }
+}
+
+
+
+
